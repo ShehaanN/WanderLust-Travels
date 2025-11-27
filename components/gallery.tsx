@@ -37,9 +37,9 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-blue-600 text-center text-pretty">
+    <section className="py-20 px-4 md:px-8 bg-background" id="gallery">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-orange-600 text-center text-pretty">
           Featured Destinations
         </h2>
 

@@ -10,7 +10,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-16 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Footer Content Grid */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
@@ -28,22 +28,34 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2 text-sm opacity-80">
               <li>
-                <a href="#" className="hover:opacity-100 transition-opacity">
+                <a
+                  href="#gallery"
+                  className="hover:opacity-100 transition-opacity"
+                >
                   Destinations
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-100 transition-opacity">
+                <a
+                  href="#services"
+                  className="hover:opacity-100 transition-opacity"
+                >
                   Services
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-100 transition-opacity">
+                <a
+                  href="#about"
+                  className="hover:opacity-100 transition-opacity"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-100 transition-opacity">
+                <a
+                  href="#home"
+                  className="hover:opacity-100 transition-opacity"
+                >
                   Home
                 </a>
               </li>

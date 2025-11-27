@@ -1,9 +1,9 @@
 const About = () => {
   return (
-    <section className="py-20 px-4 md:px-8 bg-white">
+    <section className="py-20 px-4 md:px-8 bg-white" id="about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-blue-600 text-center text-pretty">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-orange-600 text-center text-pretty">
             About WanderLust Travels
           </h2>
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
@@ -24,17 +24,17 @@ const About = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-card p-6 rounded-lg border border-gray-400">
-            <h3 className="text-2xl font-bold mb-3 text-blue-600">150+</h3>
+            <h3 className="text-2xl font-bold mb-3 text-orange-600">150+</h3>
             <p className="text-gray-600">
               Trusted Local & International Partners
             </p>
           </div>
           <div className="bg-card p-6 rounded-lg border border-gray-400">
-            <h3 className="text-2xl font-bold mb-3 text-blue-600">40K+</h3>
+            <h3 className="text-2xl font-bold mb-3 text-orange-600">40K+</h3>
             <p className="text-gray-600">Happy Travelers Worldwide</p>
           </div>
           <div className="bg-card p-6 rounded-lg border border-gray-400">
-            <h3 className="text-2xl font-bold mb-3 text-blue-600">24/7</h3>
+            <h3 className="text-2xl font-bold mb-3 text-orange-600">24/7</h3>
             <p className="text-gray-600">Dedicated Global Travel Assistance</p>
           </div>
         </div>

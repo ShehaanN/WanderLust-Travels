@@ -29,9 +29,9 @@ const Services = () => {
   ];
 
   return (
-    <section>
+    <section className="py-20 px-4 md:px-8 bg-white" id="services">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-blue-600 text-center text-pretty">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-orange-600 text-center text-pretty">
           Our Services
         </h2>
 
@@ -41,9 +41,9 @@ const Services = () => {
             return (
               <div
                 key={index}
-                className="bg-card p-8 rounded-lg border border-gray-400 hover:border-blue-400 hover:shadow-2xl transition-all duration-300"
+                className="bg-card p-8 rounded-lg border border-gray-300 hover:border-orange-600 hover:shadow-lg transition-all duration-300"
               >
-                <Icon className="w-10 h-10 text-blue-600 mb-4" />
+                <Icon className="w-10 h-10 text-orange-600 mb-4" />
                 <h3 className="text-xl font-bold mb-3 text-gray-900">
                   {service.title}
                 </h3>

@@ -64,7 +64,7 @@ const BookingPage = () => {
         <div className="mb-8">
           <Link
             href="/"
-            className="flex items-center gap-2 text-blue-500 hover:text-blue-500/80 transition-colors mb-4"
+            className="flex items-center gap-2 text-orange-600 hover:text-orange-600/80 transition-colors mb-4"
           >
             <ArrowLeft className="w-5 h-5" />
             <span className="font-medium">Back to Home</span>
@@ -87,7 +87,7 @@ const BookingPage = () => {
                 htmlFor="destination"
                 className="block text-sm font-semibold text-gray-700 mb-2"
               >
-                <MapPin className="w-4 h-4 inline mr-2 text-blue-500" />
+                <MapPin className="w-4 h-4 inline mr-2 text-orange-600" />
                 Destination
               </label>
               <input
@@ -96,7 +96,7 @@ const BookingPage = () => {
                 id="destination"
                 name="destination"
                 placeholder="Where do you want to travel?"
-                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                   errors.destination ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -114,7 +114,7 @@ const BookingPage = () => {
                   htmlFor="checkIn"
                   className="block text-sm font-semibold text-gray-700 mb-2"
                 >
-                  <Calendar className="w-4 h-4 inline mr-2 text-blue-500" />
+                  <Calendar className="w-4 h-4 inline mr-2 text-orange-600" />
                   Check-in Date
                 </label>
                 <input
@@ -122,7 +122,7 @@ const BookingPage = () => {
                   type="date"
                   id="checkIn"
                   name="checkIn"
-                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                     errors.checkIn ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -137,7 +137,7 @@ const BookingPage = () => {
                   htmlFor="checkOut"
                   className="block text-sm font-semibold text-gray-700 mb-2"
                 >
-                  <Calendar className="w-4 h-4 inline mr-2 text-blue-500" />
+                  <Calendar className="w-4 h-4 inline mr-2 text-orange-600" />
                   Check-out Date
                 </label>
                 <input
@@ -145,7 +145,7 @@ const BookingPage = () => {
                   type="date"
                   id="checkOut"
                   name="checkOut"
-                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                     errors.checkOut ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -163,14 +163,14 @@ const BookingPage = () => {
                 htmlFor="travelers"
                 className="block text-sm font-semibold text-gray-700 mb-2"
               >
-                <Users className="w-4 h-4 inline mr-2 text-blue-500" />
+                <Users className="w-4 h-4 inline mr-2 text-orange-600" />
                 Number of Travelers
               </label>
               <select
                 {...register("travelers", { valueAsNumber: true })}
                 id="travelers"
                 name="travelers"
-                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                   errors.travelers ? "border-red-500" : "border-gray-300"
                 }`}
               >
@@ -199,7 +199,7 @@ const BookingPage = () => {
                     htmlFor="name"
                     className="block text-sm font-semibold text-gray-700 mb-2"
                   >
-                    <UserRound className="w-4 h-4 inline mr-2 text-blue-500" />
+                    <UserRound className="w-4 h-4 inline mr-2 text-orange-600" />
                     Full Name
                   </label>
                   <input
@@ -208,7 +208,7 @@ const BookingPage = () => {
                     id="name"
                     name="name"
                     placeholder="Your full name"
-                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                       errors.name ? "border-red-500" : "border-gray-300"
                     }`}
                   />
@@ -224,7 +224,7 @@ const BookingPage = () => {
                     htmlFor="email"
                     className="block text-sm font-semibold text-gray-700 mb-2"
                   >
-                    <Mail className="w-4 h-4 inline mr-2 text-blue-500" />
+                    <Mail className="w-4 h-4 inline mr-2 text-orange-600" />
                     Email Address
                   </label>
                   <input
@@ -233,7 +233,7 @@ const BookingPage = () => {
                     id="email"
                     name="email"
                     placeholder="your@email.com"
-                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                       errors.email ? "border-red-500" : "border-gray-300"
                     }`}
                   />
@@ -249,7 +249,7 @@ const BookingPage = () => {
                     htmlFor="phone"
                     className="block text-sm font-semibold text-gray-700 mb-2"
                   >
-                    <Phone className="w-4 h-4 inline mr-2 text-blue-500" />
+                    <Phone className="w-4 h-4 inline mr-2 text-orange-600" />
                     Phone Number
                   </label>
                   <input
@@ -258,7 +258,7 @@ const BookingPage = () => {
                     id="phone"
                     name="phone"
                     placeholder="+1 555 123 4567"
-                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 transition-all ${
                       errors.phone ? "border-red-500" : "border-gray-300"
                     }`}
                   />
@@ -275,7 +275,7 @@ const BookingPage = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-600/90 transition-colors duration-200"
+              className="w-full py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-600/90 transition-colors duration-200"
             >
               {isSubmitting ? "Submitting..." : "Confirm Booking"}
             </button>
@@ -283,11 +283,11 @@ const BookingPage = () => {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-blue-400/10 border border-blue-400/30 rounded-lg p-6">
+        <div className="mt-8 bg-orange-600/10 border border-orange-600/30 rounded-lg p-6">
           <h3 className="font-semibold text-gray-700 mb-2">Have Questions?</h3>
           <p className="text-gray-600">
             Contact our travel team at{" "}
-            <span className="text-blue-400 font-medium mr-1">
+            <span className="text-orange-600 font-medium mr-1">
               info@wanderlust.com
             </span>
           </p>
