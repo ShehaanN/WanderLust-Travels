@@ -1,5 +1,6 @@
 "use client";
 
+import { z } from "zod";
 import {
   ArrowLeft,
   UserRound,
@@ -10,8 +11,52 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const bookingSchema = z
+  .object({
+    destination: z.string().min(2, "Destination is required"),
+    checkIn: z.string().min(1, "Check-in date is required"),
+    checkOut: z.string().min(1, "Check-out date is required"),
+    travelers: z.number().min(1, "At least one traveler is required"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Please enter a valid email address"),
+    phone: z.string().min(7, "Phone number is required"),
+  })
+  .refine(
+    (data) => {
+      const checkInDate = new Date(data.checkIn);
+      const checkOutDate = new Date(data.checkOut);
+      return checkOutDate > checkInDate;
+    },
+    {
+      message: "Check-out date must be after check-in date",
+      path: ["checkOut"],
+    }
+  );
 
 const BookingPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    watch,
+  } = useForm<z.infer<typeof bookingSchema>>({
+    resolver: zodResolver(bookingSchema),
+    defaultValues: { travelers: 1 },
+  });
+
+  const onSubmit = (data: z.infer<typeof bookingSchema>) => {
+    try {
+      console.log("Form data:", data);
+      alert("Booking submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Error submitting booking. Please try again.");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-white to-orange-500/20 py-12 px-4">
       <div className="max-w-2xl mx-auto">
@@ -35,7 +80,7 @@ const BookingPage = () => {
 
         {/* Booking Form */}
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-300">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Destination */}
             <div>
               <label
@@ -46,13 +91,20 @@ const BookingPage = () => {
                 Destination
               </label>
               <input
+                {...register("destination")}
                 type="text"
                 id="destination"
                 name="destination"
                 placeholder="Where do you want to travel?"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                  errors.destination ? "border-red-500" : "border-gray-300"
+                }`}
               />
+              {errors.destination && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.destination.message}
+                </p>
+              )}
             </div>
 
             {/* Check-in & Check-out */}
@@ -66,12 +118,19 @@ const BookingPage = () => {
                   Check-in Date
                 </label>
                 <input
+                  {...register("checkIn")}
                   type="date"
                   id="checkIn"
                   name="checkIn"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                    errors.checkIn ? "border-red-500" : "border-gray-300"
+                  }`}
                 />
+                {errors.checkIn && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.checkIn.message}
+                  </p>
+                )}
               </div>
               <div>
                 <label
@@ -82,12 +141,19 @@ const BookingPage = () => {
                   Check-out Date
                 </label>
                 <input
+                  {...register("checkOut")}
                   type="date"
                   id="checkOut"
                   name="checkOut"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                    errors.checkOut ? "border-red-500" : "border-gray-300"
+                  }`}
                 />
+                {errors.checkOut && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.checkOut.message}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -101,9 +167,12 @@ const BookingPage = () => {
                 Number of Travelers
               </label>
               <select
+                {...register("travelers", { valueAsNumber: true })}
                 id="travelers"
                 name="travelers"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                  errors.travelers ? "border-red-500" : "border-gray-300"
+                }`}
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                   <option key={num} value={num}>
@@ -111,6 +180,11 @@ const BookingPage = () => {
                   </option>
                 ))}
               </select>
+              {errors.travelers && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.travelers.message}
+                </p>
+              )}
             </div>
 
             {/* Personal Information */}
@@ -129,13 +203,20 @@ const BookingPage = () => {
                     Full Name
                   </label>
                   <input
+                    {...register("name")}
                     type="text"
                     id="name"
                     name="name"
                     placeholder="Your full name"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                      errors.name ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -147,13 +228,20 @@ const BookingPage = () => {
                     Email Address
                   </label>
                   <input
+                    {...register("email")}
                     type="email"
                     id="email"
                     name="email"
                     placeholder="your@email.com"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                      errors.email ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -165,13 +253,20 @@ const BookingPage = () => {
                     Phone Number
                   </label>
                   <input
+                    {...register("phone")}
                     type="tel"
                     id="phone"
                     name="phone"
                     placeholder="+1 555 123 4567"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className={`w-full px-4 py-3 rounded-lg border bg-background text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                      errors.phone ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.phone && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -179,9 +274,10 @@ const BookingPage = () => {
             {/* Submit Button */}
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-600/90 transition-colors duration-200"
             >
-              Confirm Booking
+              {isSubmitting ? "Submitting..." : "Confirm Booking"}
             </button>
           </form>
         </div>
